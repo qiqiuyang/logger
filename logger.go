@@ -51,18 +51,18 @@ func (l *loggerService) GetSugarLogger(suffix string) (*zap.SugaredLogger, bool)
 // MakeDefaultLogConfig 生成默认配置
 func (l *loggerService) MakeDefaultLogConfig(logPath, logName, suffix string) model.Zap {
 	return model.Zap{
-		Level:         "info",                       // 级别
-		Format:        "console",                    // 输出
-		Suffix:        fmt.Sprintf("[%s]", suffix),  // 日志后缀
-		ShowLine:      false,                        // 显示行
-		EncodeLevel:   "CapitalLevelEncoder",        // 编码级，默认使用 LowercaseLevelEncoder，大写不带颜色(在文件里带颜色无法显示)
-		StacktraceKey: "stacktrace",                 // 栈名
-		LogInConsole:  true,                         // 输出控制台
-		FilePath:      getLogPath(logPath, logName), // 日志文件的位置
-		MaxSize:       10,                           // 在进行切割之前，日志文件的最大大小（以MB为单位）
-		MaxBackups:    200,                          // 保留旧文件的最大个数
-		MaxAge:        30,                           // 保留旧文件的最大天数
-		Compress:      false,                        // 是否压缩/归档旧文件
+		Level:         "info",                             // 级别
+		Format:        "console",                          // 输出
+		Suffix:        fmt.Sprintf("[%s]", suffix),        // 日志后缀
+		ShowLine:      false,                              // 显示行
+		EncodeLevel:   "CapitalLevelEncoder",              // 编码级，默认使用 LowercaseLevelEncoder，大写不带颜色(在文件里带颜色无法显示)
+		StacktraceKey: "stacktrace",                       // 栈名
+		LogInConsole:  true,                               // 输出控制台
+		FilePath:      l.logPathDefault(logPath, logName), // 日志文件的位置
+		MaxSize:       10,                                 // 在进行切割之前，日志文件的最大大小（以MB为单位）
+		MaxBackups:    200,                                // 保留旧文件的最大个数
+		MaxAge:        30,                                 // 保留旧文件的最大天数
+		Compress:      false,                              // 是否压缩/归档旧文件
 		CallerKey:     "",
 	}
 }
