@@ -1,4 +1,4 @@
-package logutil
+package logger
 
 import (
 	"github.com/qiqiuyang/logger/model"
